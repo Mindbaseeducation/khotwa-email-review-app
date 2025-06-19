@@ -71,7 +71,7 @@ Only output values without additional commentary.
 
         try:
             response = openai.ChatCompletion.create(
-                model="gpt-4-turbo",
+                model="gpt-3.5-turbo",
                 messages=[
                     {"role": "system", "content": "You are a helpful reviewer."},
                     {"role": "user", "content": prompt}
