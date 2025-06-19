@@ -107,6 +107,7 @@ Only output values without additional commentary.
             return student_rows
 
         except Exception as e:
+            st.error(f"API call failed: {e}")
             return [["Error"] * 9]
 
     if st.button("🔍 Perform Review"):
