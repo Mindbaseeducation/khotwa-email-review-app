@@ -35,7 +35,8 @@ Email:
 TASK:
 Your job is to review the email and provide the following columns as an output:
 
-Date of Email - This column will have the date of the email as provided in the email.
+Date of Email - This column will have the first date of the email as provided in the email.
+Date of Close of Email Thread - The latest date of the email in the thread.
 PS Number - This column will have the PS number of the student mentioned in the email. NA incase of no PS Number
 Student Name - This column will have the student name of the student mentioned in the email.
 Mentor - This column will highlight the name who has the email address in the format "@mindbase.education".
@@ -55,7 +56,8 @@ Instructions:
 4. Issue, Brief, Tier Classification, and Handover Items must be extracted separately per student.
 5. Always return results in the below format:
 
-Date of Email: <value>  
+Date of Email: <value>
+Date of Close of Email Thread: <value>  
 PS Number: <value>  
 Student Name: <value>  
 Mentor: <value>  
@@ -93,6 +95,7 @@ Only output values without additional commentary.
                         fields[key.strip()] = value.strip()
                 row = [
                     fields.get("Date of Email", ""),
+                    fields.get("Date of Close of Email Thread", ""),
                     fields.get("PS Number", ""),
                     fields.get("Student Name", ""),
                     fields.get("Mentor", ""),
@@ -108,10 +111,11 @@ Only output values without additional commentary.
 
         except Exception as e:
             st.error(f"API call failed: {e}")
-            return [["Error"] * 9]
+            return [["Error"] * 10]
 
     if st.button("🔍 Perform Review"):
         with st.spinner("Reviewing... Please wait."):
+
             all_rows = []
 
             for _, row in df.iterrows():
@@ -121,14 +125,15 @@ Only output values without additional commentary.
                     all_rows.append({
                         "Original Email": email_text,
                         "Date of Email": r[0],
-                        "PS Number": r[1],
-                        "Student Name": r[2],
-                        "Mentor": r[3],
-                        "Issue": r[4],
-                        "Brief": r[5],
-                        "Tier Classification": r[6],
-                        "Sent to": r[7],
-                        "Handover Items": r[8],
+                        "Date of Close of Email Thread": r[1],
+                        "PS Number": r[2],
+                        "Student Name": r[3],
+                        "Mentor": r[4],
+                        "Issue": r[5],
+                        "Brief": r[6],
+                        "Tier Classification": r[7],
+                        "Sent to": r[8],
+                        "Handover Items": r[9]
                     })
 
             final_df = pd.DataFrame(all_rows)
