@@ -35,9 +35,9 @@ Email:
 TASK:
 Your job is to review the email and provide the following columns as an output:
 
-Date of Email - This column will have the first date of the email as provided in the email.
-Date of Close of Email Thread - The latest date of the email in the thread.
-PS Number - This column will have the PS number of the student mentioned in the email. NA incase of no PS Number
+Date of Email - This column will have the first date of the email as provided in the email (the date after the last sent:).
+Date of Close of Email Thread - The latest date of the email in the thread (the date after the first sent:).
+PS Number - This column will have the PS number of the student mentioned in the email. NA incase of no PS Number.
 Student Name - This column will have the student name of the student mentioned in the email.
 Mentor - This column will highlight the name who has the email address in the format "@mindbase.education".
 Issue - This column will highlight the issue in the email. It has to choosen from one among "Housing Issue, Salary Issue, Tuition Issue, TWIMC (To Whoever it may concern), Academic Achievement, National Service, Transcript Not Submitted, Poor academic performance, Inconsistent Communication".
