@@ -73,12 +73,11 @@ Only output values without additional commentary.
 
         try:
             response = openai.ChatCompletion.create(
-                model="gpt-4-turbo",
+                model="gpt-5",
                 messages=[
                     {"role": "system", "content": "You are a helpful reviewer."},
                     {"role": "user", "content": prompt}
-                ],
-                temperature=0
+                ]
             )
             result = response['choices'][0]['message']['content']
 
